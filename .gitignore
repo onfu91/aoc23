@@ -13,4 +13,5 @@ rust2/**/*.rs.bk
 # MSVC Windows builds of rustc generate these, which store debugging information
 rust2/*.pdb
 rust2/**/*.txt
+rust2/.idea/
 python/**/*.txt

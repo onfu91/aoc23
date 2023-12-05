@@ -1,6 +1,4 @@
 use std::fs;
-use std::ops::Index;
-use std::ptr::null;
 
 fn get_first_digit(input: &str) -> String {
     // Find the first digit in the string
@@ -24,7 +22,7 @@ fn get_last_digit(input: &str) -> String {
     }
 }
 
-fn replace_from_left(line: &str, is_reversed: bool) -> String {
+fn replace_from_left(line: &str) -> String {
     let mut my_line = String::from(line);
     let replacements = [
         ("one", "o1e"),
@@ -38,18 +36,10 @@ fn replace_from_left(line: &str, is_reversed: bool) -> String {
         ("nine", "n9e"),
     ];
     for (old_str, new_str) in &replacements {
-        if is_reversed {
-            let mut mstr = String::from(*old_str);
-            mstr = mstr.chars().rev().collect();
-            my_line = my_line.replace(&mstr, new_str);
-        } else {
-            my_line = my_line.replace(old_str, new_str);
-        }
+        my_line = my_line.replace(old_str, new_str);
     }
     return my_line
 }
-
-
 
 fn main() {
     let input_path: &str = "./input.txt";
@@ -72,7 +62,7 @@ fn main() {
     let mut sum2: i32 = 0;
     let lines2 = file_content2.lines();
     for line in lines2 {
-        let mut tmp_line_left = replace_from_left(line, false);
+        let tmp_line_left = replace_from_left(line);
         let first_digit2 = get_first_digit(&tmp_line_left);
         let last_digit2 = get_last_digit(&tmp_line_left);
         let digit2: i32 = format!("{}{}", first_digit2, last_digit2).parse().unwrap();
