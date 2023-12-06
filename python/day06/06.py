@@ -1,3 +1,4 @@
+import time as t
 from pathlib import Path
 
 
@@ -22,7 +23,7 @@ def main():
     print('Part2')
     time = 60808676
     distance = 601116315591300
-    possible_win_counts = [can_win_race(hold_time, time, distance) for hold_time in list(range(time))].count(True)
+    possible_win_counts = [can_win_race(hold_time, time, distance) for hold_time in range(time)].count(True)
     print(possible_win_counts)
 
 
